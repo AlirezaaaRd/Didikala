@@ -1575,8 +1575,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-12">
                                 <div class="form-ui dt-sl">
-                                    {% if address %}
-                                        <form class="form-account" action="{% url 'authentication:edit_address' address.id %}" method="POST">
+                                        <form class="form-account" action="{% url 'authentication:edit_address' 1 %}" method="POST">
                                         {% csrf_token %}
                                         <div class="row">
                                             <div class="col-md-6 col-sm-12 mb-2">
@@ -1646,9 +1645,6 @@
                                     
                                             <div class="col-12 pr-4 pl-4">
                                                 <button type="submit" class="btn btn-sm btn-primary btn-submit-form">ثبت و ارسال به این آدرس</button>
-                                            {% else %}
-                                                <p>Address not found or not provided.</p>
-                                            {% endif %}
                                             </div>
                                         </div>
                                     </form>                                    

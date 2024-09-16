@@ -12,7 +12,6 @@ admin.site.register(ClothesProduct)
 admin.site.register(Color)
 admin.site.register(DigitalProduct)
 admin.site.register(Image)
-admin.site.register(ClothesProduct)
 # Register your models here
 
 
