@@ -1044,9 +1044,7 @@
                                             <div class="card-horizontal-address">
                                                 <div class="card-horizontal-address-desc">
                                                     <h4 class="card-horizontal-address-full-name">{{ address.name }}</h4>
-                                                    <p>
-                                                        {{ address.state }} ، {{ address.city }}
-                                                    </p>
+                                                    <p>{{ address.state }} ، {{ address.city }}</p>
                                                 </div>
                                                 <div class="card-horizontal-address-data">
                                                     <ul class="card-horizontal-address-methods float-right">
@@ -1060,14 +1058,57 @@
                                                         </li>
                                                     </ul>
                                                     <div class="card-horizontal-address-actions">
-                                                        <button class="btn-note" data-toggle="modal"
-                                                            data-target="#modal-location-edit">ویرایش</button>
-                                                        <button class="btn-note" data-toggle="modal"
-                                                            data-target="#remove-location">حذف</button>
+                                                        <button class="btn-note" data-toggle="modal" data-target="#modal-location-edit-{{ address.id }}">ویرایش</button>
+                                                        <button class="btn-note" data-toggle="modal" data-target="#remove-location">حذف</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <div class="modal fade" id="modal-location-edit-{{ address.id }}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel{{ address.id }}" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <form method="POST" action="{% url 'authentication:edit_address' %}">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="address_id" value="{{ address.id }}">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="editModalLabel{{ address.id }}">Edit Address</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="form-group">
+                                                                <label for="name-{{ address.id }}">Name</label>
+                                                                <input type="text" class="form-control" id="name-{{ address.id }}" name="name" value="{{ address.name }}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="phone-{{ address.id }}">Phone</label>
+                                                                <input type="text" class="form-control" id="phone-{{ address.id }}" name="phone_number" value="{{ address.phone_number }}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="state-{{ address.id }}">State</label>
+                                                                <input type="text" class="form-control" id="state-{{ address.id }}" name="state" value="{{ address.state }}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="city-{{ address.id }}">City</label>
+                                                                <input type="text" class="form-control" id="city-{{ address.id }}" name="city" value="{{ address.city }}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="postal_code-{{ address.id }}">Postal Code</label>
+                                                                <input type="text" class="form-control" id="postal_code-{{ address.id }}" name="postal_code" value="{{ address.postal_code }}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+
+
                                         {% endfor %}
                                         <!-- End REAL Content -->
                                     </div>
@@ -1558,7 +1599,7 @@
         </div>
         <!-- End Modal location new -->
         <!-- Start Modal location edit -->
-        <div class="modal fade" id="modal-location-edit" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        {% comment %} <div class="modal fade" id="modal-location-edit-{{ address.id }}" role="dialog" aria-labelledby="exampleModalCenterTitle"
             aria-hidden="true">
             <div class="modal-dialog modal-lg send-info modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -1653,7 +1694,7 @@
                             <div class="col-lg-6 col-md-12">
                                 <!-- Google Map Start -->
                                 <div class="goole-map">
-                                    <div id="map-edit" style="height:440px"></div>
+                                    <div data-target="#modal-location-edit" style="height:440px"></div>
                                 </div>
                                 <!-- Google Map End -->
                             </div>
@@ -1662,7 +1703,7 @@
                 </div>
             </div>
         </div>
-        <!-- End Modal location edit -->
+        <!-- End Modal location edit --> {% endcomment %}
         <!-- Start Modal remove-location -->
         <div class="modal fade" id="remove-location" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">

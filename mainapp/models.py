@@ -1,42 +1,83 @@
 from django.db import models
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.urls import reverse
 
 
 class BaseProduct(models.Model):
-    name = models.CharField(max_length=255)
-    price = models.PositiveIntegerField()
-    count = models.PositiveIntegerField()
-    brand = models.ForeignKey('Brand', on_delete=models.CASCADE)
-    images = models.ManyToManyField('app_social.Image')
+    name = models.CharField(max_length=255 , null = True)
+    price = models.PositiveIntegerField(null = True)
+    count = models.PositiveIntegerField(null = True)
+    brand = models.ForeignKey('Brand', on_delete=models.CASCADE , null =True )
     
+
+
+    @property
+    def images(self):
+        return Image.objects.filter(
+            object_id = self.id , 
+            content_type = ContentType.objects.get_for_model(self.__class__).id)
+    
+
+    def get_absolute_url(self):
+        return reverse('mainapp:product_detail', args = (self.id, ))
+    
+
     class Meta:
         abstract = True
 
-class DigitalProduct(models.Model):
-    category = models.ForeignKey('app_social.Category', on_delete=models.CASCADE , related_name='digital_categories', null=True)
+    def __str__(self):
+        return self.name
+
+class DigitalProduct(BaseProduct):
+    category = models.ManyToManyField('Category')
     name_EN = models.CharField(max_length=255 , null=True)
+    color = models.ManyToManyField('Color')
 
-class ClothesProduct(models.Model):
-    category = models.ForeignKey('app_social.Category', on_delete=models.CASCADE , related_name='clothes_categories' , null=True)
+class ClothesProduct(BaseProduct):
+    category = models.ManyToManyField('Category')
+    color = models.ManyToManyField('Color')
 
-# class FoodProduct(models.Model):
-#     base_product = models.OneToOneField(BaseProduct, on_delete=models.CASCADE)
-#     taste = models.CharField(max_length=255)
 
 class Brand(models.Model):
     field = models.CharField(max_length=255 , null=True)
+    def __str__(self):
+        return self.field
 
 class Color(models.Model):
-    field = models.CharField(max_length=255 , null=True)
-    product = models.ManyToManyField(DigitalProduct)
+    color = models.CharField(max_length=255 , null=True)
+    hex_value = models.CharField(max_length=255 , null=True)
+    def __str__(self):
+        return self.color
 
 class Banner(models.Model):
     title = models.CharField(max_length=255 , null=True)
 
+    @property
+    def images(self):
+        return Image.objects.filter(
+            object_id = self.id , 
+            content_type = ContentType.objects.get_for_model(self.__class__).id)
+
+    def __str__(self):
+        return self.title
+
 
 class Image(models.Model):
-    banner = models.ForeignKey(Banner , on_delete=models.CASCADE , null=True)
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE , null = True ,related_name='app_store_images')
+    object_id = models.PositiveIntegerField(null = True)
+    content_object = GenericForeignKey("content_type", "object_id")
     url = models.CharField(max_length=150 , null=True)
     image = models.ImageField(upload_to='banners' , null=True)
+    def __str__(self):
+        return self.image.url    
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
     
 
 

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="fa">
 
@@ -8,23 +9,23 @@
     <meta name="theme-color" content="#f7858d">
     <meta name="msapplication-navbutton-color" content="#f7858d">
     <meta name="apple-mobile-web-app-status-bar-style" content="#f7858d">
-    <title>didikala | Cart-empty Page</title>
+    <title>didikala | Index Page</title>
     <!-- Font Icon -->
-    <link rel="stylesheet" href="./assets/css/vendor/font-awesome.min.css">
-    <link rel="stylesheet" href="./assets/css/vendor/materialdesignicons.min.css">
+    <link rel="stylesheet" href="{% static 'css/vendor/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor/materialdesignicons.min.css' %}">
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="./assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/vendor/bootstrap.min.css' %}">
     <!-- Plugins -->
-    <link rel="stylesheet" href="./assets/css/vendor/bootstrap-slider.min.css">
-    <link rel="stylesheet" href="./assets/css/vendor/owl.carousel.min.css">
-    <link rel="stylesheet" href="./assets/css/vendor/jquery.horizontalmenu.css">
-    <link rel="stylesheet" href="./assets/css/vendor/jquery-stack-menu.min.css">
-    <link rel="stylesheet" href="./assets/css/vendor/fancybox.min.css">
-    <link rel="stylesheet" href="./assets/css/vendor/nice-select.css">
-    <link rel="stylesheet" href="./assets/css/vendor/nouislider.min.css">
+    <link rel="stylesheet" href="{% static 'css/vendor/bootstrap-slider.min' %}.css">
+    <link rel="stylesheet" href="{% static 'css/vendor/owl.carousel.min' %}.css">
+    <link rel="stylesheet" href="{% static 'css/vendor/jquery.horizontalmenu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor/jquery-stack-menu' %}.min.css">
+    <link rel="stylesheet" href="{% static 'css/vendor/fancybox.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor/nouislider.min.css' %}">
     <!-- Main CSS File -->
-    <link rel="stylesheet" href="./assets/css/main.css">
-    <link rel="stylesheet" href="./assets/css/colors/default.css" id="colorswitch">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/colors/default.css' %}" id="colorswitch">
 </head>
 
 <body>
@@ -34,7 +35,7 @@
             <!-- Start ads -->
             <div class="ads-header-wrapper">
                 <a href="#" class="ads-header hidden-sm" target="_blank"
-                    style="background-image: url(./assets/img/banner/large-ads.jpg)"></a>
+                    style="background-image: url({% static 'img/banner/large-ads.jpg' %})"></a>
             </div>
             <!-- End ads -->
             <!-- Start topbar -->
@@ -44,7 +45,7 @@
                         <div class="col-lg-2 col-md-3 col-6">
                             <div class="logo-area">
                                 <a href="#">
-                                    <img src="./assets/img/logo.png" alt="">
+                                    <img src="{% static 'img/logo.png' %}" alt="">
                                 </a>
                             </div>
                         </div>
@@ -423,7 +424,7 @@
                                     </li>
                                     <li class="list-item">
                                         <a href="#">
-                                            <img src="./assets/img/theme/mega-menu.jpg" alt="">
+                                            <img src="{% static 'img/theme/mega-menu.jpg' %}" alt="">
                                         </a>
                                     </li>
                                 </ul>
@@ -582,7 +583,7 @@
                                         <li class="cart-item">
                                             <a href="#" class="header-basket-list-item">
                                                 <div class="header-basket-list-item-image">
-                                                    <img src="./assets/img/cart/1.jpg" alt="">
+                                                    <img src="{% static 'img/cart/1.jpg' %}" alt="">
                                                 </div>
                                                 <div class="header-basket-list-item-content">
                                                     <p class="header-basket-list-item-title">
@@ -610,7 +611,7 @@
                                         <li class="cart-item">
                                             <a href="#" class="header-basket-list-item">
                                                 <div class="header-basket-list-item-image">
-                                                    <img src="./assets/img/cart/2.jpg" alt="">
+                                                    <img src="{% static 'img/cart/2.jpg' %}" alt="">
                                                 </div>
                                                 <div class="header-basket-list-item-content">
                                                     <p class="header-basket-list-item-title">
@@ -638,7 +639,7 @@
                                         <li class="cart-item">
                                             <a href="#" class="header-basket-list-item">
                                                 <div class="header-basket-list-item-image">
-                                                    <img src="./assets/img/cart/3.jpg" alt="">
+                                                    <img src="{% static 'img/cart/3.jpg' %}" alt="">
                                                 </div>
                                                 <div class="header-basket-list-item-content">
                                                     <p class="header-basket-list-item-title">
@@ -692,7 +693,7 @@
                         <div class="side-menu">
                             <div class="logo-nav-res dt-sl text-center">
                                 <a href="#">
-                                    <img src="assets/img/logo.png" alt="">
+                                    <img src="{% static 'img/logo.png' %}" alt="">
                                 </a>
                             </div>
                             <div class="search-box-side-menu dt-sl text-center mt-2 mb-3">
@@ -902,471 +903,268 @@
         <!-- Start main-content -->
         <main class="main-content dt-sl mb-3">
             <div class="container main-container">
-                <div class="row">
+                <div class="row mx-0">
+                    <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 mb-2">
+                        <nav class="tab-cart-page">
+                            <div class="nav nav-tabs border-bottom" id="nav-tab" role="tablist">
+                                <a class="nav-item nav-link d-inline-flex w-auto active" id="nav-home-tab"
+                                    data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home"
+                                    aria-selected="true">سبد خرید<span class="count-cart">1</span></a>
+                                <a class="nav-item nav-link d-inline-flex w-auto" id="nav-profile-tab" data-toggle="tab"
+                                    href="#nav-profile" role="tab" aria-controls="nav-profile"
+                                    aria-selected="false">لیست خرید بعدی<span class="count-cart">1</span></a>
+                            </div>
+                        </nav>
+                    </div>
                     <div class="col-12">
-                        <div class="dt sl dt-sn dt-sn--box border pt-3 pb-5">
-                            <div class="cart-page cart-empty">
-                                <div class="circle-box-icon">
-                                    <i class="mdi mdi-cart-remove"></i>
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                                aria-labelledby="nav-home-tab">
+                                <div class="row">
+                                    <div class="col-xl-9 col-lg-8 col-12 px-0">
+                                        <div class="table-responsive checkout-content dt-sl">
+                                            <div class="checkout-header checkout-header--express">
+                                                <span class="checkout-header-title">ارسال عادی</span>
+                                                <span class="checkout-header-extra-info">(2 کالا)</span>
+                                            </div>
+                                            <div class="checkout-section-content-dd-k">
+                                                <div class="cart-items-dd-k">
+                                                    {% for item in basket_items %}
+                                                    <div class="cart-item py-4 px-3">
+                                                        <div class="item-thumbnail">
+                                                            <a href="#">
+                                                                <img src="{{ item.product.images.first.image.url }}" alt="item">
+                                                            </a>
+                                                        </div>
+                                                        <div class="item-info flex-grow-1">
+                                                            <div class="item-title">
+                                                                <h2>
+                                                                    <a href="#">
+                                                                        {{ item.product.name }}</a>
+                                                                </h2>
+                                                            </div>
+                                                            <div class="item-detail">
+                                                                <ul>
+                                                                    <li>
+                                                                        <span class="color"
+                                                                            style="background-color: #{{ item.color.hex_value }};"></span>
+                                                                        <span>{{ item.color.color }}</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i class="far fa-shield-check text-muted"></i>
+                                                                        <span>گارانتی ۱۸ ماهه</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i class="far fa-store-alt text-muted"></i>
+                                                                        <span>نام فروشنده</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i
+                                                                            class="far fa-clipboard-check text-primary"></i>
+                                                                        <span>موجود در انبار</span>
+                                                                    </li>
+                                                                </ul>
+                                                                <div class="item-quantity--item-price">
+                                                                    <div class="item-quantity">
+                                                                        <div class="num-block">
+                                                                            <div class="num-in">
+                                                                                <span class="plus"></span>
+                                                                                <input type="text" class="in-num"
+                                                                                    value="1" readonly>
+                                                                                <span class="minus dis"></span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <form action="{% url 'app_payment:delete_basket_item' item.id %}" method="POST">
+                                                                            {% csrf_token %}
+                                                                            <button type="submit" class="item-remove-btn mr-3">
+                                                                                <i class="far fa-trash-alt"></i>
+                                                                                حذف
+                                                                            </button>
+                                                                        </form>
+                                                                    </div>
+                                                                    <div class="item-price">
+                                                                        {{ item.product.price }}<span
+                                                                            class="text-sm mr-1">تومان</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-4 col-12 w-res-sidebar sticky-sidebar">
+                                        <div class="dt-sn dt-sn--box border mb-2">
+                                            <ul class="checkout-summary-summary">
+                                                <li>
+                                                    <span>مبلغ کل (۲ کالا)</span><span>۱۶,۸۹۷,۰۰۰ تومان</span>
+                                                </li>
+                                                <li class="checkout-summary-discount">
+                                                    <span>سود شما از خرید</span><span><span>(۱٪)</span>۲۰۰,۰۰۰
+                                                        تومان</span>
+                                                </li>
+                                                <li>
+                                                    <span>هزینه ارسال<span class="help-sn" data-toggle="tooltip"
+                                                            data-html="true" data-placement="bottom"
+                                                            title="<div class='help-container is-right'><div class='help-arrow'></div><p class='help-text'>هزینه ارسال مرسولات می‌تواند وابسته به شهر و آدرس گیرنده متفاوت باشد. در صورتی که هر یک از مرسولات حداقل ارزشی برابر با ۱۵۰هزار تومان داشته باشد، آن مرسوله بصورت رایگان ارسال می‌شود.<br>'حداقل ارزش هر مرسوله برای ارسال رایگان، می تواند متغیر باشد.'</p></div>">
+                                                            <span class="mdi mdi-information-outline"></span>
+                                                        </span></span><span>وابسته به آدرس</span>
+                                                </li>
+                                                <li class="checkout-club-container">
+                                                    <span>دیدیکلاب<span class="help-sn" data-toggle="tooltip"
+                                                            data-html="true" data-placement="bottom"
+                                                            title="<div class='help-container is-right'><div class='help-arrow'></div><p class='help-text'>با امتیازهای خود در باشگاه مشتریان دیجی کالا (دیجی کلاب) از بین جوایز متنوع انتخاب کنید.</p></div>">
+                                                            <span class="mdi mdi-information-outline"></span>
+                                                        </span></span><span><span>۱۵۰+</span><span> امتیاز</span></span>
+                                                </li>
+                                            </ul>
+                                            <div class="checkout-summary-devider">
+                                                <div></div>
+                                            </div>
+                                            <div class="checkout-summary-content">
+                                                <div class="checkout-summary-price-title">مبلغ قابل پرداخت:</div>
+                                                <div class="checkout-summary-price-value">
+                                                    <span class="checkout-summary-price-value-amount">۱۶,۶۹۷,۰۰۰</span>
+                                                    تومان
+                                                </div>
+                                                <a href="#" class="mb-2 d-block">
+                                                    <button class="btn-primary-cm btn-with-icon w-100 text-center pr-0">
+                                                        <i class="mdi mdi-arrow-left"></i>
+                                                        ادامه ثبت سفارش
+                                                    </button>
+                                                </a>
+                                                <div>
+                                                    <span>
+                                                        کالاهای موجود در سبد شما ثبت و رزرو نشده‌اند، برای ثبت سفارش
+                                                        مراحل بعدی را تکمیل کنید.
+                                                    </span><span class="help-sn" data-toggle="tooltip" data-html="true"
+                                                        data-placement="bottom"
+                                                        title="<div class='help-container is-right'><div class='help-arrow'></div><p class='help-text'>محصولات موجود در سبد خرید شما تنها در صورت ثبت و پرداخت سفارش برای شما رزرو می‌شوند. در صورت عدم ثبت سفارش، دیجی‌کالا هیچگونه مسئولیتی در قبال تغییر قیمت یا موجودی این کالاها ندارد.</p></div>">
+                                                        <span class="mdi mdi-information-outline"></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="dt-sn dt-sn--box checkout-feature-aside pt-4">
+                                            <ul>
+                                                <li class="checkout-feature-aside-item">
+                                                    <img src="{% static 'img/svg/return-policy.svg' %}" alt="">
+                                                    هفت روز ضمانت تعویض
+                                                </li>
+                                                <li class="checkout-feature-aside-item">
+                                                    <img src="{% static 'img/svg/payment-terms.svg' %}" alt="">
+                                                    پرداخت در محل با کارت بانکی
+                                                </li>
+                                                <li class="checkout-feature-aside-item">
+                                                    <img src="{% static 'img/svg/delivery.svg' %}" alt="">
+                                                    تحویل اکسپرس
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                                <p class="cart-empty-title">سبد خرید شما خالیست!</p>
-                                <p>می‌توانید برای مشاهده محصولات بیشتر به صفحات زیر بروید:</p>
-                                <div class="cart-empty-links mb-5">
-                                    <a href="#" class="border-bottom-dt">لیست مورد علاقه من</a>
-                                    <a href="#" class="border-bottom-dt">محصولات شگفت‌انگیز</a>
-                                    <a href="#" class="border-bottom-dt">محصولات پرفروش روز</a>
-                                </div>
-                                <a href="#" class="btn-primary-cm">ادامه خرید در دیدیکالا</a>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="dt-sn dt-sn--box mt-4">
-                    <div class="row">
-                        <!-- Start Product-Slider -->
-                        <div class="col-12">
-                            <div class="features-checkout-slider carousel-md owl-carousel owl-theme">
-                                <div class="item">
-                                    <a href="#">
-                                        <img src="./assets/img/svg/delivery.svg" class="img-fluid" alt="">
-                                        <div class="title-feature-checkout-slider">تحویل اکسپرس</div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="#">
-                                        <img src="./assets/img/svg/contact-us.svg" class="img-fluid" alt="">
-                                        <div class="title-feature-checkout-slider">پشتیبانی ۲۴ ساعته</div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="#">
-                                        <img src="./assets/img/svg/payment-terms.svg" class="img-fluid" alt="">
-                                        <div class="title-feature-checkout-slider">پرداخت در محل</div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="#">
-                                        <img src="./assets/img/svg/return-policy.svg" class="img-fluid" alt="">
-                                        <div class="title-feature-checkout-slider">۷ روز ضمانت بازگشت</div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="#">
-                                        <img src="./assets/img/svg/origin-guarantee.svg" class="img-fluid" alt="">
-                                        <div class="title-feature-checkout-slider">ضمانت اصل بودن کالا</div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Product-Slider -->
-                    </div>
-                </div>
-                <!-- Start Banner -->
-                <div class="row mt-3 mt-5 mb-4">
-                    <div class="col-sm-3 col-6 mb-2">
-                        <div class="widget-banner">
-                            <a href="#">
-                                <img src="./assets/img/banner/small-banner-1.jpg" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-6 mb-2">
-                        <div class="widget-banner">
-                            <a href="#">
-                                <img src="./assets/img/banner/small-banner-2.jpg" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-6 mb-2">
-                        <div class="widget-banner">
-                            <a href="#">
-                                <img src="./assets/img/banner/small-banner-3.jpg" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-6 mb-2">
-                        <div class="widget-banner">
-                            <a href="#">
-                                <img src="./assets/img/banner/small-banner-4.jpg" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Banner -->
-                <!-- Start Product-Slider -->
-                <section class="slider-section dt-sl mb-5">
-                    <div class="row mb-3">
-                        <div class="col-12">
-                            <div class="section-title text-sm-title title-wide no-after-title-wide">
-                                <h2>احتمالا به محصولات زیر هم علاقه‌مند باشید</h2>
-                                <a href="#">مشاهده همه</a>
-                            </div>
-                        </div>
-
-                        <!-- Start Product-Slider -->
-                        <div class="col-12">
-                            <div class="product-carousel carousel-lg owl-carousel owl-theme">
-                                <div class="item">
-                                    <div class="product-card mb-3">
-                                        <div class="product-head">
-                                            <div class="rating-stars">
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
+                            <div class="tab-pane fade" id="nav-profile" role="tabpanel"
+                                aria-labelledby="nav-profile-tab">
+                                <div class="row">
+                                    <div class="col-xl-9 col-lg-8 col-12 px-0">
+                                        <div class="table-responsive checkout-content dt-sl">
+                                            <div class="checkout-header checkout-header--express">
+                                                <span class="checkout-header-title">ارسال عادی</span>
+                                                <span class="checkout-header-extra-info">(2 کالا)</span>
+                                                <a class="checkout-add-all-to-cart">
+                                                    افزودن همه به سبد خرید
+                                                </a>
                                             </div>
-                                            <div class="discount">
-                                                <span>20%</span>
+                                            <div class="checkout-section-content-dd-k">
+                                                <div class="cart-items-dd-k">
+                                                    <div class="cart-item py-4 px-3">
+                                                        <div class="item-thumbnail">
+                                                            <a href="#">
+                                                                <img src="{% static 'img/cart/cart01.jpg' %}" alt="item">
+                                                            </a>
+                                                        </div>
+                                                        <div class="item-info flex-grow-1">
+                                                            <div class="item-title">
+                                                                <h2>
+                                                                    <a href="#">
+                                                                        گوشی موبایل شیائومی مدل Mi 10 Lite 5G M2002J9G
+                                                                        دو
+                                                                        سیم‌ کارت
+                                                                        ظرفیت
+                                                                        128 گیگابایت</a>
+                                                                </h2>
+                                                            </div>
+                                                            <div class="item-detail">
+                                                                <ul>
+                                                                    <li>
+                                                                        <span class="color"
+                                                                            style="background-color: #9E9E9E;"></span>
+                                                                        <span>خاکستری</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i class="far fa-shield-check text-muted"></i>
+                                                                        <span>گارانتی ۱۸ ماهه</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i class="far fa-store-alt text-muted"></i>
+                                                                        <span>نام فروشنده</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i
+                                                                            class="far fa-clipboard-check text-primary"></i>
+                                                                        <span>موجود در انبار</span>
+                                                                    </li>
+                                                                </ul>
+                                                                <div class="item-quantity--item-price">
+                                                                    <div class="item-quantity">
+                                                                        <div class="num-block">
+                                                                            <div class="num-in">
+                                                                                <span class="plus"></span>
+                                                                                <input type="text" class="in-num"
+                                                                                    value="1" readonly>
+                                                                                <span class="minus dis"></span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <button class="item-remove-btn mr-3">
+                                                                            <i class="far fa-trash-alt"></i>
+                                                                            حذف
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="item-price">
+                                                                        ۱۰,۷۰۹,۰۰۰<span
+                                                                            class="text-sm mr-1">تومان</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <a class="product-thumb" href="shop-single.html">
-                                            <img src="./assets/img/products/07.jpg" alt="Product Thumbnail">
-                                        </a>
-                                        <div class="product-card-body">
-                                            <h5 class="product-title">
-                                                <a href="shop-single.html">مانتو زنانه</a>
-                                            </h5>
-                                            <a class="product-meta" href="shop-categories.html">لباس زنانه</a>
-                                            <span class="product-price">157,000 تومان</span>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="item">
-                                    <div class="product-card mb-3">
-                                        <div class="product-head">
-                                            <div class="rating-stars">
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
+                                    <div class="col-xl-3 col-lg-4 col-12 w-res-sidebar sticky-sidebar">
+                                        <div class="dt-sn dt-sn--box border">
+                                            <div
+                                                class="section-title text-sm-title title-wide mb-1 no-after-title-wide mb-2">
+                                                <h2 class="text-dark">لیست خرید بعدی چیست؟</h2>
                                             </div>
-                                        </div>
-                                        <a class="product-thumb" href="shop-single.html">
-                                            <img src="./assets/img/products/017.jpg" alt="Product Thumbnail">
-                                        </a>
-                                        <div class="product-card-body">
-                                            <h5 class="product-title">
-                                                <a href="shop-single.html">کت مردانه</a>
-                                            </h5>
-                                            <a class="product-meta" href="shop-categories.html">لباس مردانه</a>
-                                            <span class="product-price">199,000 تومان</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="product-card mb-3">
-                                        <div class="product-head">
-                                            <div class="rating-stars">
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star"></i>
-                                            </div>
-                                        </div>
-                                        <a class="product-thumb" href="shop-single.html">
-                                            <img src="./assets/img/products/013.jpg" alt="Product Thumbnail">
-                                        </a>
-                                        <div class="product-card-body">
-                                            <h5 class="product-title">
-                                                <a href="shop-single.html">مانتو زنانه مدل هودی تیک تین</a>
-                                            </h5>
-                                            <a class="product-meta" href="shop-categories.html">لباس زنانه</a>
-                                            <span class="product-price">135,000 تومان</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="product-card mb-3">
-                                        <div class="product-head">
-                                            <div class="rating-stars">
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star"></i>
-                                            </div>
-                                        </div>
-                                        <a class="product-thumb" href="shop-single.html">
-                                            <img src="./assets/img/products/09.jpg" alt="Product Thumbnail">
-                                        </a>
-                                        <div class="product-card-body">
-                                            <h5 class="product-title">
-                                                <a href="shop-single.html">مانتو زنانه</a>
-                                            </h5>
-                                            <a class="product-meta" href="shop-categories.html">لباس زنانه</a>
-                                            <span class="product-price">145,000 تومان</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="product-card mb-3">
-                                        <div class="product-head">
-                                            <div class="rating-stars">
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                            </div>
-                                        </div>
-                                        <a class="product-thumb" href="shop-single.html">
-                                            <img src="./assets/img/products/010.jpg" alt="Product Thumbnail">
-                                        </a>
-                                        <div class="product-card-body">
-                                            <h5 class="product-title">
-                                                <a href="shop-single.html">مانتو زنانه</a>
-                                            </h5>
-                                            <a class="product-meta" href="shop-categories.html">لباس زنانه</a>
-                                            <span class="product-price">170,000 تومان</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="product-card mb-3">
-                                        <div class="product-head">
-                                            <div class="rating-stars">
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star"></i>
-                                            </div>
-                                            <div class="discount">
-                                                <span>20%</span>
-                                            </div>
-                                        </div>
-                                        <a class="product-thumb" href="shop-single.html">
-                                            <img src="./assets/img/products/011.jpg" alt="Product Thumbnail">
-                                        </a>
-                                        <div class="product-card-body">
-                                            <h5 class="product-title">
-                                                <a href="shop-single.html">مانتو زنانه</a>
-                                            </h5>
-                                            <a class="product-meta" href="shop-categories.html">لباس زنانه</a>
-                                            <span class="product-price">185,000 تومان</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="product-card mb-3">
-                                        <div class="product-head">
-                                            <div class="rating-stars">
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star"></i>
-                                            </div>
-                                        </div>
-                                        <a class="product-thumb" href="shop-single.html">
-                                            <img src="./assets/img/products/019.jpg" alt="Product Thumbnail">
-                                        </a>
-                                        <div class="product-card-body">
-                                            <h5 class="product-title">
-                                                <a href="shop-single.html">تیشرت مردانه</a>
-                                            </h5>
-                                            <a class="product-meta" href="shop-categories.html">لباس مردانه</a>
-                                            <span class="product-price">54,000 تومان</span>
+                                            <p class="text-secondary text-justify">
+                                                شما می‌توانید محصولاتی که به سبد خرید
+                                                خود افزوده اید و موقتا قصد خرید آن‌ها را ندارید، در لیست خرید بعدی خود
+                                                قرار داده و
+                                                هر زمان مایل بودید آن‌ها را مجدداً به سبد خرید اضافه کرده و خرید آن‌ها
+                                                را تکمیل کنید.
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- End Product-Slider -->
-
                     </div>
-                </section>
-                <!-- End Product-Slider -->
-                <!-- Start Product-Slider -->
-                <section class="slider-section dt-sl mb-5">
-                    <div class="row mb-3">
-                        <div class="col-12">
-                            <div class="section-title text-sm-title title-wide no-after-title-wide">
-                                <h2>محصولات پیشنهادی برای شما</h2>
-                                <a href="#">مشاهده همه</a>
-                            </div>
-                        </div>
-
-                        <!-- Start Product-Slider -->
-                        <div class="col-12">
-                            <div class="product-carousel carousel-lg owl-carousel owl-theme">
-                                <div class="item">
-                                    <div class="product-card mb-3">
-                                        <div class="product-head">
-                                            <div class="rating-stars">
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                            </div>
-                                            <div class="discount">
-                                                <span>20%</span>
-                                            </div>
-                                        </div>
-                                        <a class="product-thumb" href="shop-single.html">
-                                            <img src="./assets/img/products/07.jpg" alt="Product Thumbnail">
-                                        </a>
-                                        <div class="product-card-body">
-                                            <h5 class="product-title">
-                                                <a href="shop-single.html">مانتو زنانه</a>
-                                            </h5>
-                                            <a class="product-meta" href="shop-categories.html">لباس زنانه</a>
-                                            <span class="product-price">157,000 تومان</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="product-card mb-3">
-                                        <div class="product-head">
-                                            <div class="rating-stars">
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                            </div>
-                                        </div>
-                                        <a class="product-thumb" href="shop-single.html">
-                                            <img src="./assets/img/products/017.jpg" alt="Product Thumbnail">
-                                        </a>
-                                        <div class="product-card-body">
-                                            <h5 class="product-title">
-                                                <a href="shop-single.html">کت مردانه</a>
-                                            </h5>
-                                            <a class="product-meta" href="shop-categories.html">لباس مردانه</a>
-                                            <span class="product-price">199,000 تومان</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="product-card mb-3">
-                                        <div class="product-head">
-                                            <div class="rating-stars">
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star"></i>
-                                            </div>
-                                        </div>
-                                        <a class="product-thumb" href="shop-single.html">
-                                            <img src="./assets/img/products/013.jpg" alt="Product Thumbnail">
-                                        </a>
-                                        <div class="product-card-body">
-                                            <h5 class="product-title">
-                                                <a href="shop-single.html">مانتو زنانه مدل هودی تیک تین</a>
-                                            </h5>
-                                            <a class="product-meta" href="shop-categories.html">لباس زنانه</a>
-                                            <span class="product-price">135,000 تومان</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="product-card mb-3">
-                                        <div class="product-head">
-                                            <div class="rating-stars">
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star"></i>
-                                            </div>
-                                        </div>
-                                        <a class="product-thumb" href="shop-single.html">
-                                            <img src="./assets/img/products/09.jpg" alt="Product Thumbnail">
-                                        </a>
-                                        <div class="product-card-body">
-                                            <h5 class="product-title">
-                                                <a href="shop-single.html">مانتو زنانه</a>
-                                            </h5>
-                                            <a class="product-meta" href="shop-categories.html">لباس زنانه</a>
-                                            <span class="product-price">145,000 تومان</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="product-card mb-3">
-                                        <div class="product-head">
-                                            <div class="rating-stars">
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                            </div>
-                                        </div>
-                                        <a class="product-thumb" href="shop-single.html">
-                                            <img src="./assets/img/products/010.jpg" alt="Product Thumbnail">
-                                        </a>
-                                        <div class="product-card-body">
-                                            <h5 class="product-title">
-                                                <a href="shop-single.html">مانتو زنانه</a>
-                                            </h5>
-                                            <a class="product-meta" href="shop-categories.html">لباس زنانه</a>
-                                            <span class="product-price">170,000 تومان</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="product-card mb-3">
-                                        <div class="product-head">
-                                            <div class="rating-stars">
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star"></i>
-                                            </div>
-                                            <div class="discount">
-                                                <span>20%</span>
-                                            </div>
-                                        </div>
-                                        <a class="product-thumb" href="shop-single.html">
-                                            <img src="./assets/img/products/011.jpg" alt="Product Thumbnail">
-                                        </a>
-                                        <div class="product-card-body">
-                                            <h5 class="product-title">
-                                                <a href="shop-single.html">مانتو زنانه</a>
-                                            </h5>
-                                            <a class="product-meta" href="shop-categories.html">لباس زنانه</a>
-                                            <span class="product-price">185,000 تومان</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="product-card mb-3">
-                                        <div class="product-head">
-                                            <div class="rating-stars">
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star active"></i>
-                                                <i class="mdi mdi-star"></i>
-                                            </div>
-                                        </div>
-                                        <a class="product-thumb" href="shop-single.html">
-                                            <img src="./assets/img/products/019.jpg" alt="Product Thumbnail">
-                                        </a>
-                                        <div class="product-card-body">
-                                            <h5 class="product-title">
-                                                <a href="shop-single.html">تیشرت مردانه</a>
-                                            </h5>
-                                            <a class="product-meta" href="shop-categories.html">لباس مردانه</a>
-                                            <span class="product-price">54,000 تومان</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Product-Slider -->
-
-                    </div>
-                </section>
-                <!-- End Product-Slider -->
+                </div>
             </div>
         </main>
         <!-- End main-content -->
@@ -1381,31 +1179,31 @@
                     <div class="row">
                         <div class="service-item col">
                             <a href="#" target="_blank">
-                                <img src="assets/img/svg/delivery.svg">
+                                <img src="{% static 'img/svg/delivery.svg' %}">
                             </a>
                             <p>تحویل اکسپرس</p>
                         </div>
                         <div class="service-item col">
                             <a href="#" target="_blank">
-                                <img src="assets/img/svg/contact-us.svg">
+                                <img src="{% static 'img/svg/contact-us.svg' %}">
                             </a>
                             <p>پشتیبانی 24 ساعته</p>
                         </div>
                         <div class="service-item col">
                             <a href="#" target="_blank">
-                                <img src="assets/img/svg/payment-terms.svg">
+                                <img src="{% static 'img/svg/payment-terms.svg' %}">
                             </a>
                             <p>پرداخت درمحل</p>
                         </div>
                         <div class="service-item col">
                             <a href="#" target="_blank">
-                                <img src="assets/img/svg/return-policy.svg">
+                                <img src="{% static 'img/svg/return-policy.svg' %}">
                             </a>
                             <p>۷ روز ضمانت بازگشت</p>
                         </div>
                         <div class="service-item col">
                             <a href="#" target="_blank">
-                                <img src="assets/img/svg/origin-guarantee.svg">
+                                <img src="{% static 'img/svg/origin-guarantee.svg' %}">
                             </a>
                             <p>ضمانت اصل بودن کالا</p>
                         </div>
@@ -1523,8 +1321,8 @@
                             </p>
                         </div>
                         <div class="symbol col-12 col-lg-5">
-                            <a href="#" target="_blank"><img src="assets/img/symbol-01.png" alt=""></a>
-                            <a href="#" target="_blank"><img src="assets/img/symbol-02.png" alt=""></a>
+                            <a href="#" target="_blank"><img src="{% static 'img/symbol-01.png' %}" alt=""></a>
+                            <a href="#" target="_blank"><img src="{% static 'img/symbol-02.png' %}" alt=""></a>
                         </div>
                     </div>
                 </div>
@@ -1545,44 +1343,43 @@
     <div id="colorswitch-option">
         <button><i class="mdi mdi-settings"></i></button>
         <ul>
-            <li class="active" data-path="./assets/css/colors/default.css"><span
+            <li class="active" data-path="{% static 'css/colors/default.css' %}"><span
                     style="background-color: #f7858d;"></span></li>
-            <li data-path="./assets/css/colors/amber-color.css"><span style="background-color: #ffab00;"></span></li>
-            <li data-path="./assets/css/colors/blue-color.css"><span style="background-color: #2979ff;"></span></li>
-            <li data-path="./assets/css/colors/blue-grey-color.css"><span style="background-color: #607d8b;"></span>
+            <li data-path="{% static 'css/colors/amber-color.css' %}"><span style="background-color: #ffab00;"></span></li>
+            <li data-path="{% static 'css/colors/blue-color.css' %}"><span style="background-color: #2979ff;"></span></li>
+            <li data-path="{% static 'css/colors/blue-grey-color' %}.css"><span style="background-color: #607d8b;"></span>
             </li>
-            <li data-path="./assets/css/colors/brown-color.css"><span style="background-color: #795548;"></span></li>
-            <li data-path="./assets/css/colors/cyan-color.css"><span style="background-color: #00bcd4;"></span></li>
-            <li data-path="./assets/css/colors/green-color.css"><span style="background-color: #4caf50;"></span></li>
-            <li data-path="./assets/css/colors/indigo-color.css"><span style="background-color: #3f51b5;"></span></li>
-            <li data-path="./assets/css/colors/lime-color.css"><span style="background-color: #cddc39;"></span></li>
-            <li data-path="./assets/css/colors/orange-color.css"><span style="background-color: #ff9800;"></span></li>
-            <li data-path="./assets/css/colors/red-color.css"><span style="background-color: #f44336;"></span></li>
-            <li data-path="./assets/css/colors/teal-color.css"><span style="background-color: #009688;"></span></li>
-            <li data-path="./assets/css/colors/purple-color.css"><span style="background-color: #9c27b0;"></span></li>
+            <li data-path="{% static 'css/colors/brown-color.css' %}"><span style="background-color: #795548;"></span></li>
+            <li data-path="{% static 'css/colors/cyan-color.css' %}"><span style="background-color: #00bcd4;"></span></li>
+            <li data-path="{% static 'css/colors/green-color.css' %}"><span style="background-color: #4caf50;"></span></li>
+            <li data-path="{% static 'css/colors/indigo-color.css' %}"><span style="background-color: #3f51b5;"></span></li>
+            <li data-path="{% static 'css/colors/lime-color.css' %}"><span style="background-color: #cddc39;"></span></li>
+            <li data-path="{% static 'css/colors/orange-color.css' %}"><span style="background-color: #ff9800;"></span></li>
+            <li data-path="{% static 'css/colors/red-color.css' %}"><span style="background-color: #f44336;"></span></li>
+            <li data-path="{% static 'css/colors/teal-color.css' %}"><span style="background-color: #009688;"></span></li>
+            <li data-path="{% static 'css/colors/purple-color.css' %}"><span style="background-color: #9c27b0;"></span></li>
         </ul>
     </div>
     <!-- end colorPanel -->
     <!-- Core JS Files -->
-    <script src="./assets/js/vendor/jquery-3.4.1.min.js"></script>
-    <script src="./assets/js/vendor/popper.min.js"></script>
-    <script src="./assets/js/vendor/bootstrap.min.js"></script>
+    <script src="{% static 'js/vendor/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'js/vendor/popper.min.js' %}"></script>
+    <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
     <!-- Plugins -->
-    <script src="./assets/js/vendor/bootstrap-slider.min.js"></script>
-    <script src="./assets/js/vendor/owl.carousel.min.js"></script>
-    <script src="./assets/js/vendor/owl.carousel2.thumbs.min.js"></script>
-    <script src="./assets/js/vendor/jquery.nicescroll.min.js"></script>
-    <script src="./assets/js/vendor/jquery.nice-select.min.js"></script>
-    <script src="./assets/js/vendor/nouislider.min.js"></script>
-    <script src="./assets/js/vendor/jquery.horizontalmenu.js"></script>
-    <script src="./assets/js/vendor/jquery-stack-menu.min.js"></script>
-    <script src="./assets/js/vendor/jquery.fancybox.min.js"></script>
-    <script src="./assets/js/vendor/countdown.min.js"></script>
-    <script src="./assets/js/vendor/wNumb.js"></script>
-    <script src="./assets/js/vendor/ResizeSensor.min.js"></script>
-    <script src="./assets/js/vendor/theia-sticky-sidebar.min.js"></script>
+    <script src="{% static 'js/vendor/bootstrap-slider.min.js' %}"></script>
+    <script src="{% static 'js/vendor/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/vendor/owl.carousel2.thumbs.min.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery.nicescroll.min.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/vendor/nouislider.min.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery.horizontalmenu.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery-stack-menu.min.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery.fancybox.min.js' %}"></script>
+    <script src="{% static 'js/vendor/countdown.min.js' %}"></script>
+    <script src="{% static 'js/vendor/wNumb.js' %}"></script>
+    <script src="{% static 'js/vendor/ResizeSensor.min.js' %}"></script>
+    <script src="{% static 'js/vendor/theia-sticky-sidebar.min.js' %}"></script>
     <!-- Main JS File -->
-    <script src="./assets/js/main.js"></script>
-</body>
+    <script src="{% static 'js/main.js' %}"></script>
 
 </html>

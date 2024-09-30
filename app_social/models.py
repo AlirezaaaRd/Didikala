@@ -1,6 +1,10 @@
 from django.db import models
-from mainapp.models import DigitalProduct
 from authentication.models import User
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
+
+
+
 
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -19,8 +23,9 @@ class IsUseful(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     is_useful = models.BooleanField()
 
-class Category(models.Model):
-    field = models.CharField(max_length=255)
 
 class Image(models.Model):
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to='store/images/')
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE , null = True)
+    object_id = models.PositiveIntegerField(null = True)
+    content_object = GenericForeignKey("content_type", "object_id")

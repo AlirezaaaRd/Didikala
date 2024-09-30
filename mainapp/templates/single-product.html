@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="fa">
 
@@ -8,23 +10,23 @@
     <meta name="theme-color" content="#f7858d">
     <meta name="msapplication-navbutton-color" content="#f7858d">
     <meta name="apple-mobile-web-app-status-bar-style" content="#f7858d">
-    <title>didikala | Single Page</title>
+    <title>didikala | Index Page</title>
     <!-- Font Icon -->
-    <link rel="stylesheet" href="./assets/css/vendor/font-awesome.min.css">
-    <link rel="stylesheet" href="./assets/css/vendor/materialdesignicons.min.css">
+    <link rel="stylesheet" href="{% static 'css/vendor/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor/materialdesignicons.min.css' %}">
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="./assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/vendor/bootstrap.min.css' %}">
     <!-- Plugins -->
-    <link rel="stylesheet" href="./assets/css/vendor/bootstrap-slider.min.css">
-    <link rel="stylesheet" href="./assets/css/vendor/owl.carousel.min.css">
-    <link rel="stylesheet" href="./assets/css/vendor/jquery.horizontalmenu.css">
-    <link rel="stylesheet" href="./assets/css/vendor/jquery-stack-menu.min.css">
-    <link rel="stylesheet" href="./assets/css/vendor/fancybox.min.css">
-    <link rel="stylesheet" href="./assets/css/vendor/nice-select.css">
-    <link rel="stylesheet" href="./assets/css/vendor/nouislider.min.css">
+    <link rel="stylesheet" href="{% static 'css/vendor/bootstrap-slider.min' %}.css">
+    <link rel="stylesheet" href="{% static 'css/vendor/owl.carousel.min' %}.css">
+    <link rel="stylesheet" href="{% static 'css/vendor/jquery.horizontalmenu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor/jquery-stack-menu' %}.min.css">
+    <link rel="stylesheet" href="{% static 'css/vendor/fancybox.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor/nouislider.min.css' %}">
     <!-- Main CSS File -->
-    <link rel="stylesheet" href="./assets/css/main.css">
-    <link rel="stylesheet" href="./assets/css/colors/default.css" id="colorswitch">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/colors/default.css' %}" id="colorswitch">
 </head>
 
 <body>
@@ -34,7 +36,7 @@
             <!-- Start ads -->
             <div class="ads-header-wrapper">
                 <a href="#" class="ads-header hidden-sm" target="_blank"
-                    style="background-image: url(./assets/img/banner/large-ads.jpg)"></a>
+                    style="background-image: url({% static 'img/banner/large-ads.jpg' %})"></a>
             </div>
             <!-- End ads -->
             <!-- Start topbar -->
@@ -44,7 +46,7 @@
                         <div class="col-lg-2 col-md-3 col-6">
                             <div class="logo-area">
                                 <a href="#">
-                                    <img src="./assets/img/logo.png" alt="">
+                                    <img src="{% static 'img/logo.png' %}" alt="">
                                 </a>
                             </div>
                         </div>
@@ -83,22 +85,33 @@
                                         <span class="label-dropdown">حساب کاربری</span>
                                         <i class="mdi mdi-account-circle-outline"></i>
                                     </a>
-                                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-left">
-                                        <a class="dropdown-item" href="#">
-                                            <i class="mdi mdi-account-card-details-outline"></i>پروفایل
-                                        </a>
-                                        <a class="dropdown-item" href="#">
-                                            <span class="float-left badge badge-dark">۴</span>
-                                            <i class="mdi mdi-comment-text-outline"></i>پیغام ها
-                                        </a>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="mdi mdi-account-edit-outline"></i>ویرایش حساب کاربری
-                                        </a>
-                                        <div class="dropdown-divider" role="presentation"></div>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="mdi mdi-logout-variant"></i>خروج
-                                        </a>
-                                    </div>
+                                    {% if user.is_authenticated %}
+                                        <div class="dropdown-menu dropdown-menu-sm dropdown-menu-left">
+                                            <a class="dropdown-item" href="{% url 'authentication:profile' %}">
+                                                <i class="mdi mdi-account-card-details-outline"></i>پروفایل
+                                            </a>
+                                            <a class="dropdown-item" href="{% url 'app_social:messages' %}">
+                                                <span class="float-left badge badge-dark">۴</span>
+                                                <i class="mdi mdi-comment-text-outline"></i>پیغام ها
+                                            </a>
+                                            <a class="dropdown-item" href="{% url 'authentication:edit_profile' %}">
+                                                <i class="mdi mdi-account-edit-outline"></i>ویرایش حساب کاربری
+                                            </a>
+                                            <div class="dropdown-divider" role="presentation"></div>
+                                            <a class="dropdown-item" href="{% url 'authentication:logout' %}">
+                                                <i class="mdi mdi-logout-variant"></i>خروج
+                                            </a>
+                                        </div>
+                                    {% else %}
+                                        <div class="dropdown-menu dropdown-menu-sm dropdown-menu-left">
+                                            <a class="dropdown-item" href="{% url 'authentication:register' %}">
+                                                <i class="mdi mdi-account-card-details-outline"></i>ثبت نام
+                                            </a>
+                                            <a class="dropdown-item" href="{% url 'authentication:login' %}">
+                                                <i class="mdi mdi-account-card-details-outline"></i>ورود
+                                            </a>
+                                        </div>
+                                    {% endif %}
                                 </li>
                             </ul>
                         </div>
@@ -582,7 +595,7 @@
                                         <li class="cart-item">
                                             <a href="#" class="header-basket-list-item">
                                                 <div class="header-basket-list-item-image">
-                                                    <img src="./assets/img/cart/1.jpg" alt="">
+                                                    <img src="{% static 'img/cart/1.jpg' %}" alt="">
                                                 </div>
                                                 <div class="header-basket-list-item-content">
                                                     <p class="header-basket-list-item-title">
@@ -610,7 +623,7 @@
                                         <li class="cart-item">
                                             <a href="#" class="header-basket-list-item">
                                                 <div class="header-basket-list-item-image">
-                                                    <img src="./assets/img/cart/2.jpg" alt="">
+                                                    <img src="{% static 'img/cart/2.jpg' %}" alt="">
                                                 </div>
                                                 <div class="header-basket-list-item-content">
                                                     <p class="header-basket-list-item-title">
@@ -638,7 +651,7 @@
                                         <li class="cart-item">
                                             <a href="#" class="header-basket-list-item">
                                                 <div class="header-basket-list-item-image">
-                                                    <img src="./assets/img/cart/3.jpg" alt="">
+                                                    <img src="{% static 'img/cart/3.jpg' %}" alt="">
                                                 </div>
                                                 <div class="header-basket-list-item-content">
                                                     <p class="header-basket-list-item-title">
@@ -692,7 +705,7 @@
                         <div class="side-menu">
                             <div class="logo-nav-res dt-sl text-center">
                                 <a href="#">
-                                    <img src="assets/img/logo.png" alt="">
+                                    <img src="{% static 'img/logo.png' %}" alt="">
                                 </a>
                             </div>
                             <div class="search-box-side-menu dt-sl text-center mt-2 mb-3">
@@ -900,6 +913,7 @@
         </header>
         <!-- End header -->
         <!-- Start main-content -->
+        
         <main class="main-content dt-sl mb-3">
             <div class="container main-container">
                 <!-- Start title - breadcrumb -->
@@ -915,6 +929,9 @@
                 <!-- End title - breadcrumb -->
                 <!-- Start Product -->
                 <div class="dt-sn mb-5 dt-sl">
+                    <form action="{% url 'app_payment:cart' %}" method="POST">
+                        {% csrf_token %}
+                    <input type="hidden" name="product_id" value="{{ product.id }}">
                     <div class="row">
                         <!-- Product Gallery-->
                         <div class="col-lg-4 col-md-6 ps-relative">
@@ -939,57 +956,29 @@
                             <div class="product-gallery">
                                 <span class="badge">پر فروش</span>
                                 <div class="product-carousel owl-carousel" data-slider-id="1">
+                                    {% for img in product.images %}
                                     <div class="item">
-                                        <a class="gallery-item" href="./assets/img/single-product/thumbnail-1.jpg"
+                                        <a class="gallery-item" href="{{ img.image.url }}"
                                             data-fancybox="gallery1">
-                                            <img src="./assets/img/single-product/thumbnail-1.jpg" alt="Product">
+                                            <img src="{{ img.image.url }}" alt="Product">
                                         </a>
                                     </div>
-                                    <div class="item">
-                                        <a class="gallery-item" href="./assets/img/single-product/thumbnail-2.jpg"
-                                            data-fancybox="gallery1">
-                                            <img src="./assets/img/single-product/thumbnail-2.jpg" alt="Product">
-                                        </a>
-                                    </div>
-                                    <div class="item">
-                                        <a class="gallery-item" href="./assets/img/single-product/thumbnail-3.jpg"
-                                            data-fancybox="gallery1">
-                                            <img src="./assets/img/single-product/thumbnail-3.jpg" alt="Product">
-                                        </a>
-                                    </div>
-                                    <div class="item">
-                                        <a class="gallery-item" href="./assets/img/single-product/thumbnail-4.jpg"
-                                            data-fancybox="gallery1">
-                                            <img src="./assets/img/single-product/thumbnail-4.jpg" alt="Product">
-                                        </a>
-                                    </div>
+                                    {% endfor %}
                                 </div>
                                 <div class="d-flex justify-content-center flex-wrap">
                                     <ul class="product-thumbnails owl-thumbs ml-2" data-slider-id="1">
-                                        <li class="owl-thumb-item active">
+                                        {% for imag in product.images %}
+                                        <li class="owl-thumb-item {% if forloop.first %}active{% endif %}">
                                             <a href="">
-                                                <img src="./assets/img/single-product/thumbnail-1.jpg" alt="Product">
+                                                <img src="{{ imag.image.url }}" alt="Product">
                                             </a>
                                         </li>
-                                        <li class="owl-thumb-item">
-                                            <a href="">
-                                                <img src="./assets/img/single-product/thumbnail-2.jpg" alt="Product">
-                                            </a>
-                                        </li>
-                                        <li class="owl-thumb-item">
-                                            <a href="">
-                                                <img src="./assets/img/single-product/thumbnail-3.jpg" alt="Product">
-                                            </a>
-                                        </li>
-                                        <li class="owl-thumb-item">
-                                            <a href="">
-                                                <img src="./assets/img/single-product/thumbnail-4.jpg" alt="Product">
-                                            </a>
-                                        </li>
+                                        {% endfor %}
+                                        
                                     </ul>
                                     <ul class="product-thumbnails">
                                         <li>
-                                            <a class="navi-link text-sm" href="./assets/video/download.mp4"
+                                            <a class="navi-link text-sm" href="{% static 'video/download.mp4'%}"
                                                 data-fancybox data-width="960" data-height="640">
                                                 <i class="mdi mdi-video text-lg d-block mb-1"></i>
                                             </a>
@@ -1002,9 +991,11 @@
                         <div class="col-lg-8 col-md-6 py-2">
                             <div class="product-info dt-sl">
                                 <div class="product-title dt-sl mb-3">
-                                    <h1>گوشی موبایل سامسونگ مدل Galaxy A50 SM-A505F/DS دو سیم کارت ظرفیت 128گیگابایت
+                                    <h1>{{ product.name }}
                                     </h1>
-                                    <h3>Samsung Galaxy A50 SM-A505F/DS Dual SIM 128GB Mobile Phone</h3>
+                                    {% if product_type == 'digital'  %}
+                                    <h3>{{ product.name_EN }}</h3>
+                                    {% endif %}
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
@@ -1013,36 +1004,21 @@
                                                 class="section-title text-sm-title title-wide no-after-title-wide mb-0">
                                                 <h2>انتخاب رنگ:</h2>
                                             </div>
+                                            {% for color in product.color.all %}
                                             <ul class="product-variants float-right ml-3">
                                                 <li class="ui-variant">
                                                     <label class="ui-variant ui-variant--color">
                                                         <span class="ui-variant-shape"
-                                                            style="background-color: #212121"></span>
-                                                        <input type="radio" value="1" name="color"
+                                                            style="background-color: #{{ color.hex_value }}"></span>
+                                                        <input type="radio" value="{{ color.id }}" name="color"
                                                             class="variant-selector" checked>
-                                                        <span class="ui-variant--check">مشکی</span>
-                                                    </label>
-                                                </li>
-                                                <li class="ui-variant">
-                                                    <label class="ui-variant ui-variant--color">
-                                                        <span class="ui-variant-shape"
-                                                            style="background-color: #f6f6f6"></span>
-                                                        <input type="radio" value="3" name="color"
-                                                            class="variant-selector">
-                                                        <span class="ui-variant--check">سفید</span>
-                                                    </label>
-                                                </li>
-                                                <li class="ui-variant">
-                                                    <label class="ui-variant ui-variant--color">
-                                                        <span class="ui-variant-shape"
-                                                            style="background-color: #2196f3"></span>
-                                                        <input type="radio" value="4" name="color"
-                                                            class="variant-selector">
-                                                        <span class="ui-variant--check">آبی</span>
+                                                        <span class="ui-variant--check">{{ color }}</span>
                                                     </label>
                                                 </li>
                                             </ul>
+                                            {% endfor %}
                                         </div>
+                                        {% if product_type == 'digital'  %}
                                         <div class="product-params dt-sl">
                                             <ul data-title="ویژگی‌های محصول">
                                                 <li>
@@ -1080,9 +1056,10 @@
                                                 </span>
                                             </div>
                                         </div>
+                                        {% endif %}
                                         <div
                                             class="section-title text-sm-title title-wide no-after-title-wide mb-0 dt-sl">
-                                            <h2>کد محصول:225566</h2>
+                                            <h2>کد محصول:{{ product.id }}</h2>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
@@ -1096,7 +1073,7 @@
                                                     <li>
                                                         <a href="#">
                                                             <div class="product-seller-row-main">
-                                                                <img src="./assets/img/seller-logo.png" alt="">
+                                                                <img src="{% static 'img/seller-logo.png' %}" alt="">
                                                                 <div class="product-seller-first-line">
                                                                     فروشنده:
                                                                     <span class="product-seller-name">دیدیکالا</span>
@@ -1268,11 +1245,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-seller-row product-seller-row--add-to-cart">
-                                                    <a href="#" class="btn-add-to-cart btn-add-to-cart--full-width">
+                                                    <button type="submit" class="btn-add-to-cart btn-add-to-cart--full-width">
                                                         <span class="btn-add-to-cart-txt">افزودن به سبد خرید</span>
-                                                    </a>
+                                                    </button>
                                                     <div class="product-seller-digiclub">
-                                                        <img src="./assets/img/digiclub.png" alt="">
+                                                        <img src="{% static 'img/digiclub.png' %}" alt="">
                                                         <div>
                                                             دریافت
                                                             <span>۱۵۰</span>
@@ -1301,6 +1278,7 @@
                             </div>
                         </div>
                     </div>
+                    </form>
                     <!-- <div class="mb-add-to-cart-btn-wrapper">
                         <a href="#" class="mb-add-to-cart-btn">افزودن به سبد خرید</a>
                     </div> -->
@@ -1389,7 +1367,7 @@
                         </div>
                         <div class="product-seller-col">
                             <div class="product-seller-price-action">
-                                <div class="product-seller-price">۵,۵۵۰,۰۰۰<span class="currency">تومان</span></div>
+                                <div class="product-seller-price">{{ product.price }}<span class="currency">تومان</span></div>
                                 <div class="product-seller-action"><a href="#" class="btn btn-outline-danger">افزودن به
                                         سبد</a></div>
                             </div>
@@ -1468,7 +1446,7 @@
                                         <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
                                             data-parent="#accordionExample">
                                             <div class="card-body">
-                                                <img src="assets/img/single-product/1406986.jpg" alt="">
+                                                <img src="{% static 'img/single-product/1406986.jpg' %}" alt="">
                                                 <p>
                                                     در فناوری تشخیص چهره‌ی اپل، یک دوربین و
                                                     فرستنده‌ی مادون‌قرمز در بالای نمایشگر قرار داده
@@ -1487,7 +1465,7 @@
                                                     برای امنیت اطلاعاتتان نگران
                                                     باشید.
                                                 </p>
-                                                <img src="assets/img/single-product/1431842.jpg" alt="">
+                                                <img src="{% static 'img/single-product/1431842.jpg' %}" alt="">
                                                 <p>
                                                     فقط یک نکته‌ی مثبت در مورد Face ID وجود ندارد؛
                                                     بلکه موارد زیادی هستند که دانستن آن‌ها ضروری به
@@ -1506,7 +1484,7 @@
                                                     بازکردن آن استفاده کنید تا
                                                     دوباره صورتتان را بشناسد.
                                                 </p>
-                                                <img src="assets/img/single-product/1439653.jpg" alt="">
+                                                <img src="{% static 'img/single-product/1439653.jpg' %}" alt="">
                                                 <p>
                                                     اپل سعی کرده نهایت استفاده را از این فناوری جدید
                                                     بکند؛ استفاده از آن برای ثبت تصاویر پرتره با
@@ -1533,7 +1511,7 @@
                                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
                                             data-parent="#accordionExample">
                                             <div class="card-body">
-                                                <img src="assets/img/single-product/1429172.jpg" alt="">
+                                                <img src="{% static 'img/single-product/1429172.jpg' %}" alt="">
                                                 <p>
                                                     اولین تجربه‌ی استفاده از پنل‌های اولد سامسونگ
                                                     روی گوشی‌های اپل، نتیجه‌ای جذاب برای همه به
@@ -1546,7 +1524,7 @@
                                                     موجود در دنیا را طراحی
                                                     کرده و از آن روی iPhone X استفاده کرده است.
                                                 </p>
-                                                <img src="assets/img/single-product/1436228.jpg" alt="">
+                                                <img src="{% static 'img/single-product/1436228.jpg' %}" alt="">
                                                 <p>
                                                     این نمایشگر در مقایسه با پنل‌های معمولی، مصرف
                                                     انرژی کمتری دارد و این به خاطر استفاده از
@@ -1567,7 +1545,7 @@
                                                     نزدیک‌ترین غلظت و تراز سفیدی ممکن را به رنگ‌های
                                                     طبیعی داشته باشد.
                                                 </p>
-                                                <img src="assets/img/single-product/1406339.jpg" alt="">
+                                                <img src="{% static 'img/single-product/1406339.jpg' %}" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -1584,7 +1562,7 @@
                                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
                                             data-parent="#accordionExample">
                                             <div class="card-body">
-                                                <img src="assets/img/single-product/1398679.jpg" alt="">
+                                                <img src="{% static 'img/single-product/1398679.jpg' %}" alt="">
                                                 <p>
                                                     اپل پا جای پای سامسونگ گذاشته و برای داشتن ظاهری
                                                     امروزی و استفاده از جدیدترین فناوری‌های روز، سنت
@@ -1603,7 +1581,7 @@
                                                     آیفون اپل حذف‌ شده‌
                                                     است.
                                                 </p>
-                                                <img src="assets/img/single-product/1441226.jpg" alt="">
+                                                <img src="{% static 'img/single-product/1441226.jpg' %}" alt="">
                                                 <p>
                                                     زبان طراحی جدید، آیفون 10 را به‌طور عجیبی به سمت
                                                     تبدیل‌شدنش به یک کالای لوکس پیش برده است. نگاه
@@ -1622,7 +1600,7 @@
                                                     دوربین‌های روی قاب پشتی به
                                                     حالت عمودی روی قاب پشتی قرار گرفته‌اند.
                                                 </p>
-                                                <img src="assets/img/single-product/1418947.jpg" alt="">
+                                                <img src="{% static 'img/single-product/1418947.jpg' %}" alt="">
                                                 <p>
                                                     آیفون جدید در دو رنگ خاکستری و نقره‌ای راهی
                                                     بازار شده که در هر دو مدل قاب جلویی به رنگ مشکی
@@ -2319,7 +2297,7 @@
                                             </div>
                                         </div>
                                         <a class="product-thumb" href="shop-single.html">
-                                            <img src="./assets/img/products/07.jpg" alt="Product Thumbnail">
+                                            <img src="{% static 'img/products/07.jpg' %}" alt="Product Thumbnail">
                                         </a>
                                         <div class="product-card-body">
                                             <h5 class="product-title">
@@ -2342,7 +2320,7 @@
                                             </div>
                                         </div>
                                         <a class="product-thumb" href="shop-single.html">
-                                            <img src="./assets/img/products/017.jpg" alt="Product Thumbnail">
+                                            <img src="{% static 'img/products/017.jpg' %}" alt="Product Thumbnail">
                                         </a>
                                         <div class="product-card-body">
                                             <h5 class="product-title">
@@ -2365,7 +2343,7 @@
                                             </div>
                                         </div>
                                         <a class="product-thumb" href="shop-single.html">
-                                            <img src="./assets/img/products/013.jpg" alt="Product Thumbnail">
+                                            <img src="{% static 'img/products/013.jpg' %}" alt="Product Thumbnail">
                                         </a>
                                         <div class="product-card-body">
                                             <h5 class="product-title">
@@ -2388,7 +2366,7 @@
                                             </div>
                                         </div>
                                         <a class="product-thumb" href="shop-single.html">
-                                            <img src="./assets/img/products/09.jpg" alt="Product Thumbnail">
+                                            <img src="{% static 'img/products/09.jpg' %}" alt="Product Thumbnail">
                                         </a>
                                         <div class="product-card-body">
                                             <h5 class="product-title">
@@ -2411,7 +2389,7 @@
                                             </div>
                                         </div>
                                         <a class="product-thumb" href="shop-single.html">
-                                            <img src="./assets/img/products/010.jpg" alt="Product Thumbnail">
+                                            <img src="{% static 'img/products/010.jpg' %}" alt="Product Thumbnail">
                                         </a>
                                         <div class="product-card-body">
                                             <h5 class="product-title">
@@ -2437,7 +2415,7 @@
                                             </div>
                                         </div>
                                         <a class="product-thumb" href="shop-single.html">
-                                            <img src="./assets/img/products/011.jpg" alt="Product Thumbnail">
+                                            <img src="{% static 'img/products/011.jpg' %}" alt="Product Thumbnail">
                                         </a>
                                         <div class="product-card-body">
                                             <h5 class="product-title">
@@ -2460,7 +2438,7 @@
                                             </div>
                                         </div>
                                         <a class="product-thumb" href="shop-single.html">
-                                            <img src="./assets/img/products/019.jpg" alt="Product Thumbnail">
+                                            <img src="{% static 'img/products/019.jpg' %}" alt="Product Thumbnail">
                                         </a>
                                         <div class="product-card-body">
                                             <h5 class="product-title">
@@ -2492,31 +2470,31 @@
                     <div class="row">
                         <div class="service-item col">
                             <a href="#" target="_blank">
-                                <img src="assets/img/svg/delivery.svg">
+                                <img src="{% static 'img/svg/delivery.svg' %}">
                             </a>
                             <p>تحویل اکسپرس</p>
                         </div>
                         <div class="service-item col">
                             <a href="#" target="_blank">
-                                <img src="assets/img/svg/contact-us.svg">
+                                <img src="{% static 'img/svg/contact-us.svg' %}">
                             </a>
                             <p>پشتیبانی 24 ساعته</p>
                         </div>
                         <div class="service-item col">
                             <a href="#" target="_blank">
-                                <img src="assets/img/svg/payment-terms.svg">
+                                <img src="{% static 'img/svg/payment-terms.svg' %}">
                             </a>
                             <p>پرداخت درمحل</p>
                         </div>
                         <div class="service-item col">
                             <a href="#" target="_blank">
-                                <img src="assets/img/svg/return-policy.svg">
+                                <img src="{% static 'img/svg/return-policy.svg' %}">
                             </a>
                             <p>۷ روز ضمانت بازگشت</p>
                         </div>
                         <div class="service-item col">
                             <a href="#" target="_blank">
-                                <img src="assets/img/svg/origin-guarantee.svg">
+                                <img src="{% static 'img/svg/origin-guarantee.svg' %}">
                             </a>
                             <p>ضمانت اصل بودن کالا</p>
                         </div>
@@ -2634,8 +2612,8 @@
                             </p>
                         </div>
                         <div class="symbol col-12 col-lg-5">
-                            <a href="#" target="_blank"><img src="assets/img/symbol-01.png" alt=""></a>
-                            <a href="#" target="_blank"><img src="assets/img/symbol-02.png" alt=""></a>
+                            <a href="#" target="_blank"><img src="{% static 'img/symbol-01.png' %}" alt=""></a>
+                            <a href="#" target="_blank"><img src="{% static 'img/symbol-02.png' %}" alt=""></a>
                         </div>
                     </div>
                 </div>
@@ -2656,44 +2634,44 @@
     <div id="colorswitch-option">
         <button><i class="mdi mdi-settings"></i></button>
         <ul>
-            <li class="active" data-path="./assets/css/colors/default.css"><span
+            <li class="active" data-path="{% static 'css/colors/default.css' %}"><span
                     style="background-color: #f7858d;"></span></li>
-            <li data-path="./assets/css/colors/amber-color.css"><span style="background-color: #ffab00;"></span></li>
-            <li data-path="./assets/css/colors/blue-color.css"><span style="background-color: #2979ff;"></span></li>
-            <li data-path="./assets/css/colors/blue-grey-color.css"><span style="background-color: #607d8b;"></span>
+            <li data-path="{% static 'css/colors/amber-color.css' %}"><span style="background-color: #ffab00;"></span></li>
+            <li data-path="{% static 'css/colors/blue-color.css' %}"><span style="background-color: #2979ff;"></span></li>
+            <li data-path="{% static 'css/colors/blue-grey-color' %}.css"><span style="background-color: #607d8b;"></span>
             </li>
-            <li data-path="./assets/css/colors/brown-color.css"><span style="background-color: #795548;"></span></li>
-            <li data-path="./assets/css/colors/cyan-color.css"><span style="background-color: #00bcd4;"></span></li>
-            <li data-path="./assets/css/colors/green-color.css"><span style="background-color: #4caf50;"></span></li>
-            <li data-path="./assets/css/colors/indigo-color.css"><span style="background-color: #3f51b5;"></span></li>
-            <li data-path="./assets/css/colors/lime-color.css"><span style="background-color: #cddc39;"></span></li>
-            <li data-path="./assets/css/colors/orange-color.css"><span style="background-color: #ff9800;"></span></li>
-            <li data-path="./assets/css/colors/red-color.css"><span style="background-color: #f44336;"></span></li>
-            <li data-path="./assets/css/colors/teal-color.css"><span style="background-color: #009688;"></span></li>
-            <li data-path="./assets/css/colors/purple-color.css"><span style="background-color: #9c27b0;"></span></li>
+            <li data-path="{% static 'css/colors/brown-color.css' %}"><span style="background-color: #795548;"></span></li>
+            <li data-path="{% static 'css/colors/cyan-color.css' %}"><span style="background-color: #00bcd4;"></span></li>
+            <li data-path="{% static 'css/colors/green-color.css' %}"><span style="background-color: #4caf50;"></span></li>
+            <li data-path="{% static 'css/colors/indigo-color.css' %}"><span style="background-color: #3f51b5;"></span></li>
+            <li data-path="{% static 'css/colors/lime-color.css' %}"><span style="background-color: #cddc39;"></span></li>
+            <li data-path="{% static 'css/colors/orange-color.css' %}"><span style="background-color: #ff9800;"></span></li>
+            <li data-path="{% static 'css/colors/red-color.css' %}"><span style="background-color: #f44336;"></span></li>
+            <li data-path="{% static 'css/colors/teal-color.css' %}"><span style="background-color: #009688;"></span></li>
+            <li data-path="{% static 'css/colors/purple-color.css' %}"><span style="background-color: #9c27b0;"></span></li>
         </ul>
     </div>
     <!-- end colorPanel -->
     <!-- Core JS Files -->
-    <script src="./assets/js/vendor/jquery-3.4.1.min.js"></script>
-    <script src="./assets/js/vendor/popper.min.js"></script>
-    <script src="./assets/js/vendor/bootstrap.min.js"></script>
+    <script src="{% static 'js/vendor/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'js/vendor/popper.min.js' %}"></script>
+    <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
     <!-- Plugins -->
-    <script src="./assets/js/vendor/bootstrap-slider.min.js"></script>
-    <script src="./assets/js/vendor/owl.carousel.min.js"></script>
-    <script src="./assets/js/vendor/owl.carousel2.thumbs.min.js"></script>
-    <script src="./assets/js/vendor/jquery.nicescroll.min.js"></script>
-    <script src="./assets/js/vendor/jquery.nice-select.min.js"></script>
-    <script src="./assets/js/vendor/nouislider.min.js"></script>
-    <script src="./assets/js/vendor/jquery.horizontalmenu.js"></script>
-    <script src="./assets/js/vendor/jquery-stack-menu.min.js"></script>
-    <script src="./assets/js/vendor/jquery.fancybox.min.js"></script>
-    <script src="./assets/js/vendor/countdown.min.js"></script>
-    <script src="./assets/js/vendor/wNumb.js"></script>
-    <script src="./assets/js/vendor/ResizeSensor.min.js"></script>
-    <script src="./assets/js/vendor/theia-sticky-sidebar.min.js"></script>
+    <script src="{% static 'js/vendor/bootstrap-slider.min.js' %}"></script>
+    <script src="{% static 'js/vendor/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/vendor/owl.carousel2.thumbs.min.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery.nicescroll.min.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/vendor/nouislider.min.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery.horizontalmenu.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery-stack-menu.min.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery.fancybox.min.js' %}"></script>
+    <script src="{% static 'js/vendor/countdown.min.js' %}"></script>
+    <script src="{% static 'js/vendor/wNumb.js' %}"></script>
+    <script src="{% static 'js/vendor/ResizeSensor.min.js' %}"></script>
+    <script src="{% static 'js/vendor/theia-sticky-sidebar.min.js' %}"></script>
     <!-- Main JS File -->
-    <script src="./assets/js/main.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>

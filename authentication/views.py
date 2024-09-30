@@ -7,8 +7,6 @@ from django.core.validators import EmailValidator
 from django.core.exceptions import ValidationError
 from django.db.models import Q
 from .models import Address
-from .forms import AddressForm
-from .models import Address
 
 
 def edit_profile(request):
@@ -69,7 +67,6 @@ def profile(request):
 
 def addresses(request):
     if request.method == 'POST':
-        print("1")
         name = request.POST.get('name')
         Phone_number = request.POST.get('phone_number')
         city = request.POST.get('city')
@@ -80,7 +77,6 @@ def addresses(request):
 
         # Assuming user is logged in
         user = request.user
-        print("2")
         # Create and save a new Address object
         Address.objects.create(
             user=user,
@@ -100,19 +96,27 @@ def addresses(request):
 
     return render(request, 'profile-addresses.html', {'addresses': user_addresses})
 
-def edit_address(request, address_id):
-    address = get_object_or_404(Address, id=address_id, user=request.user)
-
+def edit_address(request):
     if request.method == 'POST':
-        form = AddressForm(request.POST, instance=address)
-        if form.is_valid():
-            form.save()
-            return redirect('authentication:addresses')  # Redirect to the addresses list
-    else:
-        form = AddressForm(instance=address)
+        address_id = request.POST.get('address_id')
+        name = request.POST.get('name')
+        phone_number = request.POST.get('phone_number')
+        state = request.POST.get('state')
+        city = request.POST.get('city')
+        postal_code = request.POST.get('postal_code')
 
-    # Ensure you're passing the address object to the template
-    return render(request, 'addresses.html', {'form': form, 'address': address})
+        # Update the address
+        Address.objects.filter(id=address_id).update(
+            name=name,
+            phone_number=phone_number,
+            state=state,
+            city=city,
+            postal_code=postal_code
+        )
+
+    user_addresses = Address.objects.filter(user=request.user)
+
+    return render(request, 'profile-addresses.html', {'addresses': user_addresses})
 
 def register(request):
     if request.user.is_authenticated:
@@ -181,11 +185,11 @@ def welcome(request):
 
 def my_logout(request):
     logout(request)  # Logs out the user
-    return redirect('homepage')
+    return redirect('mainapp:homepage')
 
 def my_login(request):
     if request.user.is_authenticated:
-        return redirect('index')  # Redirect to index if already logged in
+        return redirect('mainapp:homepage')  # Redirect to index if already logged in
     
     elif request.method == 'POST':
         Username = request.POST.get('username')
@@ -194,10 +198,10 @@ def my_login(request):
         if user is not None:
             login(request, user)
             messages.success(request, 'ثبت نام با موفقیت انجام شد! اکنون وارد حساب کاربری خود شده‌اید.')
-            return render(request,"index.html")
+            return redirect('mainapp:homepage')
         else:
             messages.error(request, 'نام کاربری و یا رمز ورود اشتباه است')
-            return redirect('homepage')
+            return redirect('mainapp:homepage')
     else:
         return render(request , 'login.html')
 

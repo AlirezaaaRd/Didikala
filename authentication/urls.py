@@ -12,6 +12,5 @@ urlpatterns = [
     path('welcome/' , views.welcome , name='welcome'),
     path('favorites/' , views.favorites , name='favorites'),
     path('adresses/' , views.addresses , name='addresses'),
-    path('edit_address/<int:address_id>/', views.edit_address, name='edit_address'),
-   
+    path('edit_address/', views.edit_address, name='edit_address')
 ]

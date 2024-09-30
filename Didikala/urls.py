@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('' , include('mainapp.urls')),
     path('profile/' , include('authentication.urls')),
+    path('app_payment/' , include('app_payment.urls')),
     path('social/' , include('app_social.urls', namespace='app_social')),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
