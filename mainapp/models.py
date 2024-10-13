@@ -4,11 +4,15 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.urls import reverse
 
 
-class BaseProduct(models.Model):
+class Product(models.Model):
     name = models.CharField(max_length=255 , null = True)
     price = models.PositiveIntegerField(null = True)
     count = models.PositiveIntegerField(null = True)
     brand = models.ForeignKey('Brand', on_delete=models.CASCADE , null =True )
+    category = models.ManyToManyField('Category')
+    name_EN = models.CharField(max_length=255 , null=True)
+    color = models.ManyToManyField('Color')
+    is_suggested = models.BooleanField(default=False)
     
 
 
@@ -23,20 +27,8 @@ class BaseProduct(models.Model):
         return reverse('mainapp:product_detail', args = (self.id, ))
     
 
-    class Meta:
-        abstract = True
-
     def __str__(self):
         return self.name
-
-class DigitalProduct(BaseProduct):
-    category = models.ManyToManyField('Category')
-    name_EN = models.CharField(max_length=255 , null=True)
-    color = models.ManyToManyField('Color')
-
-class ClothesProduct(BaseProduct):
-    category = models.ManyToManyField('Category')
-    color = models.ManyToManyField('Color')
 
 
 class Brand(models.Model):

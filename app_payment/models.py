@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-from mainapp.models import DigitalProduct , Color , ClothesProduct
+from mainapp.models import Product , Color
 
 User = get_user_model()
 
@@ -15,7 +15,7 @@ class Order(models.Model):
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    product = models.ForeignKey(DigitalProduct, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     count = models.IntegerField()
 
 class Basket(models.Model):
@@ -23,7 +23,7 @@ class Basket(models.Model):
 
 class BasketItem(models.Model):
     basket = models.ForeignKey(Basket, on_delete=models.CASCADE)
-    product = models.ForeignKey(ClothesProduct, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     color = models.ForeignKey(Color, on_delete=models.DO_NOTHING, null=True, blank=True)
     count = models.IntegerField()
 

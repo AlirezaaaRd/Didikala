@@ -993,7 +993,7 @@
                                 <div class="product-title dt-sl mb-3">
                                     <h1>{{ product.name }}
                                     </h1>
-                                    {% if product_type == 'digital'  %}
+                                    {% if product.category == 'دیجیتال'  %}
                                     <h3>{{ product.name_EN }}</h3>
                                     {% endif %}
                                 </div>
@@ -1018,7 +1018,7 @@
                                             </ul>
                                             {% endfor %}
                                         </div>
-                                        {% if product_type == 'digital'  %}
+                                        {% if product.category == 'دیجیتال'  %}
                                         <div class="product-params dt-sl">
                                             <ul data-title="ویژگی‌های محصول">
                                                 <li>

@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path , include
 from authentication import views
 
 app_name = 'authentication'
@@ -12,5 +12,6 @@ urlpatterns = [
     path('welcome/' , views.welcome , name='welcome'),
     path('favorites/' , views.favorites , name='favorites'),
     path('adresses/' , views.addresses , name='addresses'),
-    path('edit_address/', views.edit_address, name='edit_address')
+    path('edit_address/', views.edit_address, name='edit_address'),
+    path('api/' , include('authentication.api.urls'))
 ]

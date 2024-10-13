@@ -1,0 +1,29 @@
+{% for clothes in product %}
+
+                                <div class="item">
+                                    <div class="product-card mb-3">
+                                        <div class="product-head">
+                                            <div class="rating-stars">
+                                                <i class="mdi mdi-star active"></i>
+                                                <i class="mdi mdi-star active"></i>
+                                                <i class="mdi mdi-star active"></i>
+                                                <i class="mdi mdi-star active"></i>
+                                                <i class="mdi mdi-star active"></i>
+                                            </div>
+                                            <div class="discount">
+                                                <span>20%</span>
+                                            </div>
+                                        </div>
+                                        <a class="product-thumb" href="{{ clothes.get_absolute_url }}">
+                                            <img src="{{ clothes.images.first.image.url }}" alt="Product Thumbnail">
+                                        </a>
+                                        <div class="product-card-body">
+                                            <h5 class="product-title">
+                                                <a href="{{ clothes.get_absolute_url }}">{{ clothes.name }}</a>
+                                            </h5>
+                                            <a class="product-meta" href="shop-categories.html">{% for cate in clothes.category.all %}{{cate.name}} {% if not forloop.last %},{% endif %}{% endfor %}</a>
+                                            <span class="product-price">{{ clothes.price }} تومان</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}

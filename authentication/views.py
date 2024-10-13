@@ -211,8 +211,6 @@ def favorites(request):
 
 
 
-
-
 def validate_email(email):
     validator = EmailValidator()
 

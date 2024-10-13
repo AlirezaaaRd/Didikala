@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericStackedInline
 from .models import (
-    Brand, ClothesProduct, Color, 
-    DigitalProduct , Image , Banner , Category
+    Brand, Product, Color, 
+    Image , Banner , Category
 )
 # class ImageInLine(admin.StackedInline):
 #     model = Image
@@ -25,12 +25,7 @@ class BannerAdmin(admin.ModelAdmin):
     inlines = [BImageInLine]
     pass
 
-@admin.register(DigitalProduct)
-class DigitalProductAdmin(admin.ModelAdmin):
-    inlines = [BImageInLine]
-    pass
-
-@admin.register(ClothesProduct)
-class ClothesProductAdmin(admin.ModelAdmin):
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
     inlines = [BImageInLine]
     pass

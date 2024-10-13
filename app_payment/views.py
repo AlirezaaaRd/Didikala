@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Basket, BasketItem ,Color , DigitalProduct
-from mainapp.models import ClothesProduct
+from .models import Basket, BasketItem ,Color , Product
 # Create your views here.
 def cart_manager(request):
     user = request.user
@@ -16,10 +15,10 @@ def cart_manager(request):
         count = int(request.POST.get('count', 1))  # Get count, default to 1 if not provided
         
         # Retrieve the product and color (color can be optional)
-        product = DigitalProduct.objects.filter(id=product_id).first()
+        product = Product.objects.filter(id=product_id).first()
 
         if not product:
-            product = ClothesProduct.objects.filter(id=product_id).first()
+            product = Product.objects.filter(id=product_id).first()
 
         color = get_object_or_404(Color, id=color_id) if color_id else None
         
