@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-*6yj2xejg_7*%6t1og)adbt5z+o3*v0$3h4tkuzrf9gvhryr*8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://127.0.0.1:8000' , 'https://alirezaaard.pythonanywhere.com/']
 LOGIN_REDIRECT_URL = "homepage"
 LOGOUT_REDIRECT_URL = 'homepage'
 
@@ -124,7 +124,7 @@ USE_I18N = True
 USE_TZ = True
 
 
-DOMAIN = 'http://127.0.0.1:8000'
+# DOMAIN = 'http://127.0.0.1:8000'
 
 # CORS_ALLOW_ALL_ORIGINS = True
 
